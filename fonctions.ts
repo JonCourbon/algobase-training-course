@@ -44,6 +44,14 @@ function effacerDessin(): void{
 	context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function hauteurZone(): number{
+	return canvas.height;
+}
+
+function largeurZone(): number{
+	return canvas.width;
+}
+
 
 
 /**

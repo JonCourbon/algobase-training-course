@@ -33,6 +33,12 @@ function effacerDessin() {
     existanceZoneDessin();
     context.clearRect(0, 0, canvas.width, canvas.height);
 }
+function hauteurZone() {
+    return canvas.height;
+}
+function largeurZone() {
+    return canvas.width;
+}
 /**
  * Dessine un rectangle (non rempli) avec bords noirs
  * @param posX position en X du coin haut gauche du rectangle
