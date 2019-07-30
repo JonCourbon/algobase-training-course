@@ -149,3 +149,6 @@ Compilez pour vérifier que vous n'avez pas fait d'erreur.
 Est-il possible de dessiner d'autres figures géométriques ?
 
 Vous ne savez pas ce qui est possible. Nous allons donc explorer la documentation. Celle-ci se présente sous la forme d'une page web que l'on peut retrouver ici: doc/index.html.
+
+## Question 9
+Tracez un cercle, un rectangle rempli, un segment, ...

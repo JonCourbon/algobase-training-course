@@ -36,6 +36,7 @@ ou
 > Une console permet d'afficher les informations que l'on souhaite afficher
 2. Affichez la console via: Outils > Outils de développement web > Outils puis cliquer sur "Console"
 Le code est écrit dans la partie de droite, le résultat en Javascript obtenu après compilation est au centre, la console pour afficher des informations est à gauche:
+
 ![Playground](images/playground.jpg)
 
 3. Pour exécuter le code, cliquez sur le bouton "Run"

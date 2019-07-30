@@ -38,16 +38,24 @@ function existanceZoneDessin(): void {
 		return;
 	}
 }
-
+/**
+ * Efface le contenu de la zone de dessin
+ **/
 function effacerDessin(): void{
 	existanceZoneDessin();
 	context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+/**
+ * @returns la hauteur de la zone de dessin
+ **/
 function hauteurZone(): number{
 	return canvas.height;
 }
 
+/**
+ * @returns la largeur de la zone de dessin
+ **/
 function largeurZone(): number{
 	return canvas.width;
 }
