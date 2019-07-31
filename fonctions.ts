@@ -159,6 +159,57 @@ function dessinerSegment(posX1:number, posY1:number,posX2:number, posY2:number) 
 	context.lineTo(posX2, posY2);
 }
 
+/**
+ * Dessine une etoile avec bords noirs, largeur de 1
+ * @param cx position en X du centre
+ * @param cy position en Y du centre
+ * @param spikes nombre de sommets
+ */
+function dessinerEtoileGenerique(cx:number, cy:number, spikes:number, outerRadius:number, innerRadius:number): void {
+	existanceZoneDessin();
+	var rot:number = Math.PI / 2 * 3;
+    var x:number = cx;
+    var y:number = cy;
+    var step:number = Math.PI / spikes;
+    var i:number;
+
+    context.beginPath();
+    context.moveTo(cx, cy - outerRadius)
+    for (i = 0; i < spikes; i++) {
+        x = cx + Math.cos(rot) * outerRadius;
+        y = cy + Math.sin(rot) * outerRadius;
+        context.lineTo(x, y)
+        rot += step
+
+        x = cx + Math.cos(rot) * innerRadius;
+        y = cy + Math.sin(rot) * innerRadius;
+        context.lineTo(x, y)
+        rot += step
+    }
+    context.lineTo(cx, cy - outerRadius)
+    context.closePath();
+    context.stroke();
+}
+
+/**
+ * Dessine une etoile à 5 sommets avec bords noirs, largeur de 1
+ * @param cx position en X du centre
+ * @param cy position en Y du centre
+ */
+function dessinerEtoile5(cx:number, cy:number) : void {
+	dessinerEtoileGenerique(cx,cy,5, 30,15);
+}
+
+/**
+ * Dessine une etoile à 6 sommets avec bords noirs, largeur de 1
+ * @param cx position en X du centre
+ * @param cy position en Y du centre
+ */
+function dessinerEtoile6(cx:number, cy:number): void {
+	dessinerEtoileGenerique(cx,cy,6, 30,15);
+}
+
+
 
 /**
  * Dessine un segment

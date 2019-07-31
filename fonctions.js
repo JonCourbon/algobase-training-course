@@ -29,13 +29,22 @@ function existanceZoneDessin() {
         return;
     }
 }
+/**
+ * Efface le contenu de la zone de dessin
+ **/
 function effacerDessin() {
     existanceZoneDessin();
     context.clearRect(0, 0, canvas.width, canvas.height);
 }
+/**
+ * @returns la hauteur de la zone de dessin
+ **/
 function hauteurZone() {
     return canvas.height;
 }
+/**
+ * @returns la largeur de la zone de dessin
+ **/
 function largeurZone() {
     return canvas.width;
 }
@@ -128,6 +137,51 @@ function dessinerSegment(posX1, posY1, posX2, posY2) {
     context.beginPath();
     context.moveTo(posX1, posY1);
     context.lineTo(posX2, posY2);
+}
+/**
+ * Dessine une etoile avec bords noirs, largeur de 1
+ * @param cx position en X du centre
+ * @param cy position en Y du centre
+ * @param spikes nombre de sommets
+ */
+function dessinerEtoileGenerique(cx, cy, spikes, outerRadius, innerRadius) {
+    existanceZoneDessin();
+    var rot = Math.PI / 2 * 3;
+    var x = cx;
+    var y = cy;
+    var step = Math.PI / spikes;
+    var i;
+    context.beginPath();
+    context.moveTo(cx, cy - outerRadius);
+    for (i = 0; i < spikes; i++) {
+        x = cx + Math.cos(rot) * outerRadius;
+        y = cy + Math.sin(rot) * outerRadius;
+        context.lineTo(x, y);
+        rot += step;
+        x = cx + Math.cos(rot) * innerRadius;
+        y = cy + Math.sin(rot) * innerRadius;
+        context.lineTo(x, y);
+        rot += step;
+    }
+    context.lineTo(cx, cy - outerRadius);
+    context.closePath();
+    context.stroke();
+}
+/**
+ * Dessine une etoile à 5 sommets avec bords noirs, largeur de 1
+ * @param cx position en X du centre
+ * @param cy position en Y du centre
+ */
+function dessinerEtoile5(cx, cy) {
+    dessinerEtoileGenerique(cx, cy, 5, 30, 15);
+}
+/**
+ * Dessine une etoile à 6 sommets avec bords noirs, largeur de 1
+ * @param cx position en X du centre
+ * @param cy position en Y du centre
+ */
+function dessinerEtoile6(cx, cy) {
+    dessinerEtoileGenerique(cx, cy, 6, 30, 15);
 }
 /**
  * Dessine un segment
