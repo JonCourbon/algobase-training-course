@@ -200,9 +200,43 @@ function dessinerSegment2(posX1, posY1, posX2, posY2, epaisseur, couleur) {
     strokeShape(couleur);
     context.lineWidth = 1;
 }
+/**
+ * Dessine un texte rempli (en noir)
+ * @param posX position en X du coin haut gauche
+ * @param posY position en Y du coin haut gauche
+ * @param texte texte à afficher
+ */
+function dessinerTexte(posX, posY, texte) {
+    existanceZoneDessin();
+    context.font = "20pt Calibri,Geneva,Arial";
+    context.strokeStyle = "black";
+    context.fillStyle = "black";
+    context.fillText(texte, posX, posY);
+}
+/**
+ * Dessine un texte coloré, d'une certaine taille de police
+ * @param posX position en X du coin haut gauche
+ * @param posY position en Y du coin haut gauche
+ * @param texte texte à afficher
+ */
+function dessinerTexte2(posX, posY, texte, couleur, taillepolice) {
+    existanceZoneDessin();
+    context.font = "" + taillepolice + "pt Calibri,Geneva,Arial";
+    context.strokeStyle = couleur;
+    context.fillStyle = couleur;
+    context.fillText(texte, posX, posY);
+}
+/**
+ * Affiche un texte dans une popup
+ * @param message Le texte à afficher
+ */
 function afficherTexte(message) {
     alert(message);
 }
+/**
+ * Lit le texte écrit dans la zone d'identifiant idZone
+ * @return le texte
+ */
 function recupererTexteZone(idZone) {
     var inputElement = document.getElementById(idZone);
     return inputElement.value;

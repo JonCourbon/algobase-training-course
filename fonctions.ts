@@ -2,7 +2,7 @@
  * FONCTIONS
  */
  
-var zoneDessinCreee = false;
+var zoneDessinCreee : boolean = false;
 var canvas: HTMLCanvasElement;
 var context: CanvasRenderingContext2D;	
 var defaultFill : string;
@@ -229,14 +229,54 @@ function dessinerSegment2(posX1:number, posY1:number,posX2:number, posY2:number,
 	context.lineWidth = 1;
 }
 
+
+/**
+ * Dessine un texte rempli (en noir)
+ * @param posX position en X du coin haut gauche
+ * @param posY position en Y du coin haut gauche
+ * @param texte texte à afficher
+ */
+function dessinerTexte(posX: number, posY: number, texte: string) : void{
+	existanceZoneDessin();
+	context.font = "20pt Calibri,Geneva,Arial";
+    context.strokeStyle = "black";
+    context.fillStyle = "black";
+    context.fillText(texte, posX, posY);
+}
+
+/**
+ * Dessine un texte coloré, d'une certaine taille de police
+ * @param posX position en X du coin haut gauche
+ * @param posY position en Y du coin haut gauche
+ * @param texte texte à afficher
+ */
+function dessinerTexte2(posX: number, posY: number, texte: string, couleur: string, taillepolice:number) : void{
+	existanceZoneDessin();
+	context.font = "" + taillepolice +"pt Calibri,Geneva,Arial";
+    context.strokeStyle = couleur;
+    context.fillStyle = couleur;
+    context.fillText(texte, posX, posY);
+}
+
+
+/**
+ * Affiche un texte dans une popup
+ * @param message Le texte à afficher
+ */
 function afficherTexte(message:string) {
   alert(message);	
 }
 
+/**
+ * Lit le texte écrit dans la zone d'identifiant idZone
+ * @return le texte
+ */
 function recupererTexteZone(idZone:string) : string {
 	const inputElement = document.getElementById(idZone) as HTMLInputElement;
 	return inputElement.value;
 }
+
+
 
 function lireTexte(messageAffiche:string) : string {
   var txt;
@@ -248,6 +288,7 @@ function lireTexte(messageAffiche:string) : string {
   }
   return txt;	
 }
+
 
 function lireNombre(messageAffiche:string) : number {
 	var number;
