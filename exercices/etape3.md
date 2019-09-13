@@ -1,5 +1,5 @@
 # algobase-training-course
-# Etape 3: Boucles et conditions
+# Etape 3: Boucles
 Typescript est compilé pour générer du Javascript, langage utilisé côté client pour les sites internet. Nous allons donc maintenant utiliser du TypeScript pour afficher des éléments dans une page web. Nous nous focaliserons sur l'affichage d'éléments graphiques dans une fenêtre (un objet de type *canvas* en HTML).
 
 Ouvrez la page index.html du dossier algobase-training-course dans un navigateur. De la même façon que précédemment, ouvrez la console de développement web pour voir les éléments affichés et/ou les erreurs.
@@ -48,7 +48,7 @@ Nous répétons une instruction similaire 5 fois. Nous pouvons donc employer la 
 
 Voici le code pour notre boucle:
 
-    var posX:number;
+    let posX:number;
     for(posX=0;posX<=400;posX=posX+100){
         // l'instruction à répéter (ici: dessiner un rectangle en posX,200)
     }
@@ -71,10 +71,10 @@ Nous allons utiliser dans la boucle:
 
 -
 
-    var nbrectangles:number:5;
-    var norectangle:number=0;
+    let nbrectangles:number=5;
+    let norectangle:number=0;
     for(norectangle=0;norectangle<nbrectangles;norectangle++){
-        dessinerRectangleRempli(100*norectangle,200,"blue");
+        dessinerRectangleRempli(100*norectangle,200,10,100,"blue");
     }
 
 > **i** Il ne faut pas oublier de définir et initialiser la variable nbrectangles !

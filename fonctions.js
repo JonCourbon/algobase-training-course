@@ -90,7 +90,7 @@ function dessinerRectangleArrondi(posX, posY, largeur, hauteur, rayon) {
  * Dessine un rectangle avec couleur de remplissage
  * @param posX position en X du coin haut gauche du rectangle
  * @param posY position en Y du coin haut gauche du rectangle
- * @param couleur "red" par défaut
+ * @param couleur  (couleur css: "red" / "#FF00FF" / "rgb(255,0,0)" ...; par défaut: rouge)
  */
 function dessinerRectangleRempli(posX, posY, largeur, hauteur, couleur) {
     existanceZoneDessin();
@@ -217,10 +217,14 @@ function dessinerTexte(posX, posY, texte) {
  * Dessine un texte coloré, d'une certaine taille de police
  * @param posX position en X du coin haut gauche
  * @param posY position en Y du coin haut gauche
+ * @param couleur couleur (couleur css: "red" / "#FF00FF" / "rgb(255,0,0)" ...)
+ * @param taillepolice taille de la police en pixel (20 par défaut)
  * @param texte texte à afficher
  */
 function dessinerTexte2(posX, posY, texte, couleur, taillepolice) {
     existanceZoneDessin();
+    if (!taillepolice)
+        taillepolice = 20;
     context.font = "" + taillepolice + "pt Calibri,Geneva,Arial";
     context.strokeStyle = couleur;
     context.fillStyle = couleur;
@@ -259,6 +263,10 @@ function lireNombre(messageAffiche) {
     } while (isNaN(number));
     return number;
 }
+/**
+ * Change la couleur de remplissage par défaut
+ * @param couleur (couleur css: "red" / "#FF00FF" / "rgb(255,0,0)" ...)
+ */
 function setFill(couleur) {
     if (couleur)
         context.fillStyle = couleur;
