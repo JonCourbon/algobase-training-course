@@ -281,7 +281,9 @@ function recupererTexteZone(idZone:string) : string {
 }
 
 
-
+/**
+ * Affiche une popup où le message est affiché et où l'utilisateur doit saisir une chaine de caracteres.
+ */
 function lireTexte(messageAffiche:string) : string {
   var txt;
   var texte = prompt(messageAffiche, "--");
@@ -293,7 +295,9 @@ function lireTexte(messageAffiche:string) : string {
   return txt;	
 }
 
-
+/**
+ * Affiche une popup où le message est affiché et où l'utilisateur doit saisir un nombre. Celle-ci se ré-ouvre tant que ce n'est pas un entier
+ */
 function lireNombre(messageAffiche:string) : number {
 	var number;
 	do {
