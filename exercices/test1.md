@@ -202,7 +202,7 @@ Dans la suite, essayez de trouver la solution sans coder puis traduisez le code 
 ## Question 18
     Entier k;
     Pour k de 8 à 13 pas de 2 faire
-        dessinerCercle(i*10,20,10);
+        dessinerCercle(k*10,20,10);
     Fin Pour
 
 - Combien de cercles sont dessinés ?
@@ -214,7 +214,7 @@ Dans la suite, essayez de trouver la solution sans coder puis traduisez le code 
     nbcercles <-5;
     couleur <- "blue";
     Pour nocercle de 0 à nbcercles pas de 1 faire
-        dessinerCercleRempli(i*10,0,10,couleur);
+        dessinerCercleRempli(nocercle*10,0,10,couleur);
         Si (nbcercles %2 == 0) alors
             couleur <- "red";
         Fin Si
@@ -235,7 +235,7 @@ Dans la suite, essayez de trouver la solution sans coder puis traduisez le code 
     Fin Si
     Pour nocercle de 0 à nbcercles pas de 1 faire
         Si (nocercle %2 == 0) alors
-            dessinerCercleRempli(i*10,0,10,couleur);
+            dessinerCercleRempli(nocercle*10,0,10,couleur);
         Fin Si
     Fin Pour
 
