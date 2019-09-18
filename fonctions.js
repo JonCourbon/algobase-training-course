@@ -245,6 +245,9 @@ function recupererTexteZone(idZone) {
     var inputElement = document.getElementById(idZone);
     return inputElement.value;
 }
+/**
+ * Affiche une popup où le message est affiché et où l'utilisateur doit saisir une chaine de caracteres.
+ */
 function lireTexte(messageAffiche) {
     var txt;
     var texte = prompt(messageAffiche, "--");
@@ -256,6 +259,9 @@ function lireTexte(messageAffiche) {
     }
     return txt;
 }
+/**
+ * Affiche une popup où le message est affiché et où l'utilisateur doit saisir un nombre. Celle-ci se ré-ouvre tant que ce n'est pas un entier
+ */
 function lireNombre(messageAffiche) {
     var number;
     do {
@@ -280,4 +286,11 @@ function strokeShape(couleur) {
         context.strokeStyle = defaultStroke;
     context.stroke();
     context.strokeStyle = defaultStroke;
+}
+/**
+ * Génère un nombre aléatoire entre 0 et N
+ * @param N: nombre maximum
+*/
+function nombreAleatoire(N) {
+    return Math.floor(Math.random() * N);
 }

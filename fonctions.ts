@@ -326,3 +326,11 @@ function strokeShape(couleur?:string){
 	context.stroke();
 	context.strokeStyle = defaultStroke;
 }
+
+/**
+ * Génère un nombre aléatoire entre 0 et N
+ * @param N: nombre maximum
+*/
+function nombreAleatoire(N:number):number {
+	return Math.floor(Math.random() * N);
+}

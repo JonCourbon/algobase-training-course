@@ -8,7 +8,7 @@ Reprenons notre code précédent:
     /// <reference path="fonctions.ts"/>
     creerZoneDessin();
     let nbrectangles:number=5;
-    let norectangle:number=0;
+    let norectangle:number;
     for(norectangle=0;norectangle<nbrectangles;norectangle++){
         dessinerRectangleRempli(100*norectangle,200,10,100,"blue");
     }
@@ -20,7 +20,8 @@ Au lieu de
     
 indiquez
 
-    let nbrectangles:number=lireNombre("Combien de rectangles voulez-vous afficher ?");
+    let nbrectangles:number;
+    nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher ?");
 
 
 ----
@@ -112,3 +113,118 @@ Remarque: la variable couleur est maintenant utilisée uniquement dans la boucle
     for(norectangle=0;norectangle<nbrectangles;norectangle++){
         let couleur:string;
         if(norectangle == 0) {
+        // ...
+        }
+        dessinerRectangleRempli(100*norectangle,200,10,100,couleur);
+    }
+
+Transcompilez et testez !
+Ajoutez après la boucle l'instruction suivante:
+
+    console.log(couleur);
+
+Essayez de transcompiler...
+
+> **i** La variable couleur a été définie à l'intérieur de la boucle. Cette variable n'est accessible que dans ce bloc d'instruction là (dans ce bloc et les sous-blocs) et donc pas en dehors du bloc ... comme par exemple pour notre console.log . C'est ce qu'on appelle la portée d'une variable. L'avantage est très simple: les variables définies dans un bloc d'instruction (notamment dans une fonction) ne sont utilisées que dans ce bloc, ce qui permet d'avoir des variables nommées similairement.
+
+----
+## Question 6
+Précédemment (Question 2), nous avons demandé à l'utilisateur de saisir un nombre puis nous affichions nbrectangles_max ou nbrectangles rectangles. Une alternative est de demander à l'utilisateur de saisir un nombre de rectangle "compatible" avec le nombre maximum.
+Modifiez votre code en indiquant à l'utilisateur combien de rectangles maximum il peut demander:
+1) on calcule la valeur de nbrectangles_max d'abord
+2) puis on demande à l'utilisateur:
+
+    let nbrectangles:number;
+    nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher (infèrieur ou égal à "+nbrectangles_max+")?");
+
+
+> **i** Le + correspond à la concaténation de chaînes de caractères
+
+## Question 6 (suite)
+Rien n'oblige l'utilisateur à réellement saisir un nombre infèrieur ou égal à 
+nbrectangles_max. Pour l'obliger, il faudrait redemander à l'utilisateur de saisir le nombre s'il dépasse (ie. s'il est supérieur à nbrectangles_max). Puis lui redemander à nouveau si ce n'est toujours pas bon, etc...
+
+On effectue donc plusieurs fois l'instruction "demander à l'utilisateur" et on ne sait pas à l'avance combien de fois => Boucle TANT QUE
+
+- Instruction répétée:
+
+    nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher (infèrieur ou égal à "+nbrectangles_max+")?");
+
+- Condition pour rester dans la boucle: le nombre saisi par l'utilisateur est  plus grand que nbrectangles_max
+=> (nbrectangles >=nbrectangles_max) 
+
+- Initialisation: il faut donner à nbrectangles une valeur qui permette de rentrer dans la boucle. On peut par exemple donner la valeur nbrectangles_max+1
+
+- Pour éviter une boucle infinie, il faut mettre à jour la valeur de nbrectangles dans la boucle: c'est ce qui est fait avec nbrectangles=lireNombre...
+
+Le code est donc:
+
+
+    nbrectangles=nbrectangles_max+1; // initialisation pour rentrer dans la boucle
+    while( nbrectangles >=nbrectangles_max )
+    {
+    	nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher (infèrieur ou égal à "+nbrectangles_max+")?"); // on demande à l'utilisateur et on affecte une nouvelle valeur à nbrectangles
+    }
+
+Lorsque la valeur de nbrectangles est valide, on sort de la boucle et on peut alors faire la suite du code (afficher les rectangles).
+
+
+## Question 6 (ter)
+En TypeScript, les nombres sont des entiers (non naturels). L'utilisateur peut donc saisir un nombre infèrieur à 0. Nous considèrerons qu'il doit mettre 0 s'il n'en veut pas mais pas un nombre infèrieur. Il faut donc modifier la condition: on redemande à l'utilisateur tant que le nombre est soit plus petit que 0 soit plus grand que nbrectangles_max:
+=> (nbrectangles<0) OU (nbrectangles >=nbrectangles_max)
+
+En TypeScript l'opérateur logique entre booléens OU s'écrit ||
+
+    while( (nbrectangles<0) || (nbrectangles >=nbrectangles_max))
+    {
+    	nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher (entre 0 et "+nbrectangles_max+")?"); // on demande à l'utilisateur et on affecte une nouvelle valeur à nbrectangles
+    }
+
+
+----
+## Question 7
+Nous souhaitons modifier le code précédent: l'utilisateur devra entrer l'espacement souhaité entre les rectangles (et non plus la valeur de 100). L'espacement devra être un nombre: plus grand que 0 et plus petit que 200.
+Comme cet espacement est utilisé pour calculer le nombre maximum de rectangles, cet espacement doit être spécifier avant. Comme précédemment, pour forcer l'utilisateur à saisir un nombre valide, il faudra répéter de demander à l'utilisateur si ce n'est pas bon. Le début du code est donc:
+
+    let espacement:number = -1;
+
+- Ajoutez le code demandant à l'utilisateur de saisir l'espacement (dans une boucle TANT QUE).
+
+- Modifiez le calcul du nombre maximum de rectangles
+
+- Modifiez l'emplacement des rectangles dans la boucle POUR: espacement\*norectangle au lieu de 100\*norectangle
+
+Nous allons rajouter une contrainte: l'espacement doit être un multiple de 10. Il faut donc continuer de demander si le modulo 10 du nombre saisi n'est pas nul. Ajoutez cela dans la condition du TANT QUE (il faut rajouter un nouveau OU) ... et spécifiez à l'utilisateur que ce doit être un multiple de 10.
+
+----
+## Question 8: nettoyage du code
+Il est important de faire un code durable. Rappel des règles de base: indentation, nommage explicite des variables, séparation des morceaux de code, commentaires
+
+    /// <reference path="fonctions.ts"/>
+    let espacement:number;
+    let nbrectangles_max:number;
+    let nbrectangles:number;
+    let norectangle:number;
+    
+    creerZoneDessin();
+
+    // quel espacement
+    espacement=-1;// initialisation pour rentrer dans la boucle
+    while( (espacement<0) || (espacement >=200) || (espacement%10 !=0 ) )
+    {
+    	espacement=lireNombre("Combien voulez-vous d'espacement entre les rectangles (entre 0 et 200, multiple de 10)?"); // mise à jour de la valeur
+    }
+
+    // combien de rectangles
+    nbrectangles_max=largeurZone()/espacement;
+    nbrectangles=nbrectangles_max+1; // initialisation pour rentrer dans la boucle
+    while( (nbrectangles<0) || (nbrectangles >=nbrectangles_max))
+    {
+    	nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher (entre 0 et "+nbrectangles_max+")?"); // mise à jour de la valeur
+    }
+    
+    // tracé des rectangles
+    for(norectangle=0;norectangle<nbrectangles;norectangle++){
+    	dessinerRectangleRempli(espacement*norectangle,200,10,100,"blue");
+    }
+
