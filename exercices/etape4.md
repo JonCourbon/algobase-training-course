@@ -151,7 +151,7 @@ On effectue donc plusieurs fois l'instruction "demander à l'utilisateur" et on 
     nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher (infèrieur ou égal à "+nbrectangles_max+")?");
 
 - Condition pour rester dans la boucle: le nombre saisi par l'utilisateur est  plus grand que nbrectangles_max
-=> (nbrectangles >=nbrectangles_max) 
+=> (nbrectangles > nbrectangles_max) 
 
 - Initialisation: il faut donner à nbrectangles une valeur qui permette de rentrer dans la boucle. On peut par exemple donner la valeur nbrectangles_max+1
 
@@ -161,7 +161,7 @@ Le code est donc:
 
 
     nbrectangles=nbrectangles_max+1; // initialisation pour rentrer dans la boucle
-    while( nbrectangles >=nbrectangles_max )
+    while( nbrectangles > nbrectangles_max )
     {
     	nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher (infèrieur ou égal à "+nbrectangles_max+")?"); // on demande à l'utilisateur et on affecte une nouvelle valeur à nbrectangles
     }
@@ -171,11 +171,11 @@ Lorsque la valeur de nbrectangles est valide, on sort de la boucle et on peut al
 
 ## Question 6 (ter)
 En TypeScript, les nombres sont des entiers (non naturels). L'utilisateur peut donc saisir un nombre infèrieur à 0. Nous considèrerons qu'il doit mettre 0 s'il n'en veut pas mais pas un nombre infèrieur. Il faut donc modifier la condition: on redemande à l'utilisateur tant que le nombre est soit plus petit que 0 soit plus grand que nbrectangles_max:
-=> (nbrectangles<0) OU (nbrectangles >=nbrectangles_max)
+=> (nbrectangles<0) OU (nbrectangles > nbrectangles_max)
 
 En TypeScript l'opérateur logique entre booléens OU s'écrit ||
 
-    while( (nbrectangles<0) || (nbrectangles >=nbrectangles_max))
+    while( (nbrectangles<0) || (nbrectangles > nbrectangles_max))
     {
     	nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher (entre 0 et "+nbrectangles_max+")?"); // on demande à l'utilisateur et on affecte une nouvelle valeur à nbrectangles
     }
@@ -210,7 +210,7 @@ Il est important de faire un code durable. Rappel des règles de base: indentati
 
     // quel espacement
     espacement=-1;// initialisation pour rentrer dans la boucle
-    while( (espacement<0) || (espacement >=200) || (espacement%10 !=0 ) )
+    while( (espacement<0) || (espacement > 200) || (espacement%10 !=0 ) )
     {
     	espacement=lireNombre("Combien voulez-vous d'espacement entre les rectangles (entre 0 et 200, multiple de 10)?"); // mise à jour de la valeur
     }
@@ -218,7 +218,7 @@ Il est important de faire un code durable. Rappel des règles de base: indentati
     // combien de rectangles
     nbrectangles_max=largeurZone()/espacement;
     nbrectangles=nbrectangles_max+1; // initialisation pour rentrer dans la boucle
-    while( (nbrectangles<0) || (nbrectangles >=nbrectangles_max))
+    while( (nbrectangles<0) || (nbrectangles > nbrectangles_max))
     {
     	nbrectangles=lireNombre("Combien de rectangles voulez-vous afficher (entre 0 et "+nbrectangles_max+")?"); // mise à jour de la valeur
     }
